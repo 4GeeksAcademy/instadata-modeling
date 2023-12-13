@@ -1,9 +1,8 @@
 import os
 import sys
-import enum
-from sqlalchemy import Column, ForeignKey, Integer, String, Enum
+from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship, declarative_base
+from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 from eralchemy2 import render_er
 
@@ -83,3 +82,13 @@ class Follower(Base):
     # Relations
     users = relationship(Users)
 
+def to_dict(self):
+    return {}
+    
+    ## Draw from SQLAlchemy base
+try:
+    result = render_er(Base, 'diagram.png')
+    print("Success! Check the diagram.png file")
+except Exception as e:
+    print("There was a problem genering the diagram")
+    raise e
